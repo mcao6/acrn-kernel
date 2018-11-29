@@ -101,10 +101,6 @@ static int add_guest_map(struct vhm_vm *vm, unsigned long vm0_gpa,
 	if (vm->max_gfn < max_gfn)
 		vm->max_gfn = max_gfn;
 
-	pr_info("VHM: add hugepage with size=0x%lx, vm0_gpa=0x%llx,"
-		" and its guest gpa = 0x%llx, vm max_gfn 0x%x\n",
-		map->size, map->vm0_gpa, map->guest_gpa, vm->max_gfn);
-
 	mutex_lock(&vm->hugepage_lock);
 	/* 1G hugepage? */
 	if (map->size == (1UL << HUGEPAGE_1G_SHIFT))
